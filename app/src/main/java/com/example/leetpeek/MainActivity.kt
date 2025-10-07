@@ -3,12 +3,14 @@ package com.example.leetpeek
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +22,23 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
-
         val bottomNav = findViewById<BottomNavigationView>(R.id.nav)
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
         bottomNav.setupWithNavController(navController)
+        setSupportActionBar(toolbar)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        supportActionBar?.setHomeButtonEnabled(false)
 
+        toolbar.setNavigationIcon(R.drawable.hamburger)
+        toolbar.setNavigationOnClickListener {
+            drawerLayout.openDrawer(navView)
+        }
     }
+
 }
