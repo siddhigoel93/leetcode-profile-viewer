@@ -13,7 +13,16 @@
     <fragment
         android:id="@+id/profilePage"
         android:name="com.example.leetpeek.ProfileFragment"
-        android:label="Profile Page"/>
+        android:label="Profile Page">
+        <action
+            android:id="@+id/action_profilePage_to_submissionPage"
+            app:destination="@id/SubmissionPage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SubmissionPage"
+        android:name="com.example.leetpeek.SubmissionFragment"
+        android:label="Submission Page"/>
 
 
 

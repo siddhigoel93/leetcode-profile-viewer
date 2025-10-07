@@ -9,4 +9,9 @@ interface LeetCodeApi {
     suspend fun getUserProfile(
         @Path("username") username: String
     ): UserProfileData
+
+    @GET("/{username}/solved")
+    suspend fun getSubmData(
+        @Path("username") username: String
+    ) : SubmissionsData
 }

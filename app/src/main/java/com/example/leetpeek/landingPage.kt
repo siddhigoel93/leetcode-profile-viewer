@@ -31,8 +31,14 @@ class LandingPage : Fragment() {
             if (username.isEmpty()) {
                 Toast.makeText(requireContext(), "Please enter the username", Toast.LENGTH_SHORT).show()
             }
-           else
+           else {
+                val sharedPref = requireActivity().getSharedPreferences("MyPrefs", 0)
+                with(sharedPref.edit()) {
+                    putString("leetcode_username", username)
+                    apply()
+                }
                 fetchUserProfile(username)
+            }
         }
 
         return view
@@ -44,17 +50,22 @@ class LandingPage : Fragment() {
 
 
         lifecycleScope.launch {
-            val result = leetcodeApi.getUserProfile(username)
+            try {
+                val result = leetcodeApi.getUserProfile(username)
+                val result2 = leetcodeApi.getSubmData(username)
 
-            val bundle = Bundle().apply {
-                putString("name", result.name)
-                putString("username" ,result.username)
-                putString("ranking", result.ranking.toString())
-                putString("about" , result.about)
+                val bundle = Bundle().apply {
+                    putString("name", result.name)
+                    putString("username", result.username)
+                    putString("ranking", result.ranking.toString())
+                    putString("about", result.about)
+                    putString("solvedProblem" , result2.solvedProblem.toString())
+                }
+
+                findNavController().navigate(R.id.profilePage, bundle)
+            }catch (e: Exception){
+                Toast.makeText(requireContext(), "error : ${e.message}" , Toast.LENGTH_LONG ).show()
             }
-
-            findNavController().navigate(R.id.profilePage, bundle)
-
 
         }
     }

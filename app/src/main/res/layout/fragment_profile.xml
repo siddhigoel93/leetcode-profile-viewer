@@ -243,7 +243,7 @@
                         android:textSize="14sp"
                         android:textColor="@color/white"
                         android:layout_marginTop="4dp"/>
-                </LinearLayout
+                </LinearLayout>
 
 
                 <LinearLayout

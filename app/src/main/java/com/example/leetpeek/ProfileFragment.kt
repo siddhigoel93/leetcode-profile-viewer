@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
+import android.widget.LinearLayout
+
 
 
 class ProfileFragment : Fragment() {
@@ -28,14 +31,19 @@ class ProfileFragment : Fragment() {
         val rank = arguments?.getString("ranking") ?: "N/A"
         val about = arguments?.getString("about" )?: "No description"
         val avatar = arguments?.getString("avatar")
+        val solved = arguments?.getString("solvedProblem")
 
         // Find TextViews and set data
         view.findViewById<TextView>(R.id.profileName).text = name
         view.findViewById<TextView>(R.id.profileUsername)?.text = username
         view.findViewById<TextView>(R.id.rankCount)?.text = rank
         view.findViewById<TextView>(R.id.about).text = about
+        view.findViewById<TextView>(R.id.countSolved)
 
-
+        val submSection = view.findViewById<LinearLayout>(R.id.sectionSubmissions)
+        submSection.setOnClickListener {
+            findNavController().navigate(R.id.action_profilePage_to_submissionPage)
+        }
 
         return view
     }

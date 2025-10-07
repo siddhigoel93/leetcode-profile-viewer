@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-   <item android:id="@+id/home"
+   <item android:id="@+id/profilePage"
        android:title="@string/home"
        android:icon="@drawable/home_icon"/>
     <item android:id="@+id/badge"
         android:title="badge"
         android:icon="@drawable/badge_icon"/>
-    <item android:id="@+id/submissions"
+    <item android:id="@+id/SubmissionPage"
         android:title="submissions"
         android:icon="@drawable/done_icon"/>
     <item android:id="@+id/contest"
