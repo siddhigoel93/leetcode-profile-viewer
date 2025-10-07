@@ -1,8 +1,9 @@
-package com.example.leetpeek.data
+package com.example.leetpeek
 
-data class UserProfile(
+data class UserProfileData(
     val username: String ,
     val name: String,
+    val avatar: String ,
     val ranking: Int?,
     val reputation: Int?,
     val gitHub: String?,

@@ -10,6 +10,11 @@
         android:label="Landing Page"
         />
 
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.example.leetpeek.ProfileFragment"
+        android:label="Profile Page"/>
+
 
 
 </navigation>

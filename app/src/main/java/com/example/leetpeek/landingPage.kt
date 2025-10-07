@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 
 
@@ -40,13 +41,21 @@ class LandingPage : Fragment() {
     private fun fetchUserProfile(username: String) {
         val leetcodeApi = RetrofitHelper.getInstance().create(LeetCodeApi::class.java)
 
+
+
         lifecycleScope.launch {
-                val result = leetcodeApi.getUserProfile(username)
-                Toast.makeText(
-                    requireContext(),
-                    "Name: ${result.name} \n Ranking: ${result.ranking}",
-                    Toast.LENGTH_LONG
-                ).show()
+            val result = leetcodeApi.getUserProfile(username)
+
+            val bundle = Bundle().apply {
+                putString("name", result.name)
+                putString("username" ,result.username)
+                putString("ranking", result.ranking.toString())
+                putString("about" , result.about)
+            }
+
+            findNavController().navigate(R.id.profilePage, bundle)
+
+
         }
     }
 }
