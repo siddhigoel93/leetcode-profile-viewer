@@ -14,4 +14,9 @@ interface LeetCodeApi {
     suspend fun getSubmData(
         @Path("username") username: String
     ) : SubmissionsData
+
+    @GET("/{username}/badges")
+    suspend fun getBadges(
+        @Path("username") username: String
+    ) : BadgesData
 }

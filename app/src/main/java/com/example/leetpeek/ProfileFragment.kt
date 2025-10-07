@@ -44,6 +44,10 @@ class ProfileFragment : Fragment() {
         submSection.setOnClickListener {
             findNavController().navigate(R.id.action_profilePage_to_submissionPage)
         }
+        val badgeSection = view.findViewById<LinearLayout>(R.id.sectionBadges)
+        badgeSection.setOnClickListener {
+            findNavController().navigate(R.id.action_profilePage_to_badgesPage)
+        }
 
         return view
     }

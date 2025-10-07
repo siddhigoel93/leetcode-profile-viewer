@@ -17,12 +17,20 @@
         <action
             android:id="@+id/action_profilePage_to_submissionPage"
             app:destination="@id/SubmissionPage" />
+        <action
+            android:id="@+id/action_profilePage_to_badgesPage"
+            app:destination="@id/BadgesPage" />
     </fragment>
 
     <fragment
         android:id="@+id/SubmissionPage"
         android:name="com.example.leetpeek.SubmissionFragment"
         android:label="Submission Page"/>
+
+    <fragment
+        android:id="@+id/BadgesPage"
+        android:name="com.example.leetpeek.BadgesFragment"
+        android:label="Badges Page"/>
 
 
 
