@@ -8,15 +8,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.leetpeek.dataClasses.Submission
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.google.android.material.chip.ChipGroup
 
 class SolvedFragment : Fragment() {
 
     private lateinit var subItem: RecyclerView
     private lateinit var solvedAdapter: SolvedAdapter
+    lateinit var filters: ChipGroup
+    var allSubmissions: List<Submission> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +34,9 @@ class SolvedFragment : Fragment() {
         solvedAdapter = SolvedAdapter(emptyList())
         subItem.adapter = solvedAdapter
 
+
+        filters = view.findViewById<ChipGroup>(R.id.filters)
+
         val sharedPref = requireActivity().getSharedPreferences("MyPrefs", 0)
         val username = sharedPref.getString("leetcode_username", "") ?: ""
 
@@ -38,7 +45,7 @@ class SolvedFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Username not found!", Toast.LENGTH_SHORT).show()
         }
-
+        filterListener()
         return view
     }
 
@@ -50,7 +57,8 @@ class SolvedFragment : Fragment() {
                 val response = api.getSolved(username)
 
                 withContext(Dispatchers.Main) {
-                    solvedAdapter.solvedList = response.submission
+                    allSubmissions = response.submission
+                    solvedAdapter.solvedList = allSubmissions
                     solvedAdapter.notifyDataSetChanged()
                 }
             } catch (e: Exception) {
@@ -59,6 +67,20 @@ class SolvedFragment : Fragment() {
                         .show()
                 }
             }
+        }
+    }
+    fun filterListener(){
+        filters.setOnCheckedChangeListener { _, checkedId ->
+            val filteredList = when (checkedId) {
+                R.id.accepted -> allSubmissions.filter { it.statusDisplay.equals("Accepted", true) }
+                R.id.time -> allSubmissions.filter { it.statusDisplay.contains("Time Limit", true) }
+                R.id.runtime -> allSubmissions.filter { it.statusDisplay.contains("Runtime", true) }
+                R.id.compile -> allSubmissions.filter { it.statusDisplay.contains("Compile", true) }
+                else -> allSubmissions
+            }
+
+            solvedAdapter.solvedList = filteredList
+            solvedAdapter.notifyDataSetChanged()
         }
     }
 }

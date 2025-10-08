@@ -31,16 +31,11 @@ class ProfileFragment : Fragment() {
         val rank = arguments?.getString("ranking") ?: "-"
         val about = arguments?.getString("about" )?: "No description"
         val solved = arguments?.getString("solvedProblem")?: "0"
-        val reputation = arguments?.getString("reputation")?: "-"
-        val solvedC = arguments?.getString("solvedProblem")?: "0"
-
 
         view.findViewById<TextView>(R.id.profileName).text = name
         view.findViewById<TextView>(R.id.profileUsername)?.text = username
         view.findViewById<TextView>(R.id.rankCount)?.text = rank
         view.findViewById<TextView>(R.id.about).text = about
-        view.findViewById<TextView>(R.id.countSolved).text = solved
-        view.findViewById<TextView>(R.id.reputation).text = reputation
         view.findViewById<TextView>(R.id.solvedCount).text = solved
 
         val submSection = view.findViewById<LinearLayout>(R.id.sectionSubmissions)

@@ -94,10 +94,10 @@
 
             <LinearLayout
                 android:id="@+id/statsLayout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3"
+                android:weightSum="2"
                 android:background="@drawable/card_bg"
                 android:padding="20dp"
                 android:layout_marginTop="24dp"
@@ -154,29 +154,7 @@
                         android:textColor="#9AA0A6"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/reputation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="7"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="reputation"
-                        android:textSize="13sp"
-                        android:textColor="#9AA0A6"/>
-                </LinearLayout>
             </LinearLayout>
 
 
@@ -208,14 +186,7 @@
                         android:textSize="16sp"
                         android:textColor="@color/white"/>
 
-                    <TextView
-                        android:id="@+id/countSubmissions"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="14sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="10dp"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -235,14 +206,7 @@
                         android:textSize="16sp"
                         android:textColor="@color/white"/>
 
-                    <TextView
-                        android:id="@+id/countSolved"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="14sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+
                 </LinearLayout>
 
 
@@ -263,14 +227,7 @@
                         android:textSize="16sp"
                         android:textColor="@color/white"/>
 
-                    <TextView
-                        android:id="@+id/countBadges"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="14sp"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="4dp"/>
+
                 </LinearLayout>
 
             </LinearLayout>
