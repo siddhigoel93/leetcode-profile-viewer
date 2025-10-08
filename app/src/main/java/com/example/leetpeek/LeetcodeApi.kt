@@ -1,6 +1,7 @@
 package com.example.leetpeek
 
 import com.example.leetpeek.dataClasses.BadgesData
+import com.example.leetpeek.dataClasses.SolvedQuesData
 import com.example.leetpeek.dataClasses.Submission
 import com.example.leetpeek.dataClasses.SubmissionsData
 import com.example.leetpeek.dataClasses.UserProfileData
@@ -28,6 +29,6 @@ interface LeetCodeApi {
     @GET("{username}/submission?limit=20")
     suspend fun getSolved(
         @Path("username") username: String,
-    ) : List<Submission>
+    ) : SolvedQuesData
 }
 

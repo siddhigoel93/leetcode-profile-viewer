@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.profilePage -> navigateTo(R.id.profilePage)
                 R.id.SubmissionPage -> navigateTo(R.id.SubmissionPage)
                 R.id.BadgesPage -> navigateTo(R.id.BadgesPage)
+                R.id.SolvedPage -> navigateTo(R.id.SolvedPage)
             }
 
             drawerLayout.closeDrawers()

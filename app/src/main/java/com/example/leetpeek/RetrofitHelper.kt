@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelper {
 
-    val BASE_URL = "https://alfa-leetcode-api.onrender.com/"
+    val BASE_URL = "https://alfa-leetcode-api-88t9.onrender.com/"
 
     fun getInstance() : Retrofit{
         return Retrofit.Builder()

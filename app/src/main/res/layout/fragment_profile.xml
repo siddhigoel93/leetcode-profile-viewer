@@ -162,7 +162,7 @@
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/streakCount"
+                        android:id="@+id/reputation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="7"
@@ -173,7 +173,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Day Streak"
+                        android:text="reputation"
                         android:textSize="13sp"
                         android:textColor="#9AA0A6"/>
                 </LinearLayout>
