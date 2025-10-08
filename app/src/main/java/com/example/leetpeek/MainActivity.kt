@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,40 @@ class MainActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             drawerLayout.openDrawer(navView)
         }
+//        fun navigateTo(destination: Int) {
+//            val currentId = navController.currentDestination?.id
+//            when (currentId) {
+//                R.id.profilePage -> {
+//                    when (destination) {
+//                        R.id.SubmissionPage -> navController.navigate(R.id.action_profilePage_to_submissionPage)
+//                        R.id.BadgesPage -> navController.navigate(R.id.action_profilePage_to_badgesPage)
+//                    }
+//                }
+//                R.id.SubmissionPage -> {
+//                    when (destination) {
+//                        R.id.profilePage -> navController.navigate(R.id.action_submissionPage_to_profilePage)
+//                        R.id.BadgesPage -> navController.navigate(R.id.action_SubmissionPage_to_badgesPage)
+//                    }
+//                }
+//                R.id.BadgesPage -> {
+//                    when (destination) {
+//                        R.id.profilePage -> navController.navigate(R.id.action_BadgesPage_to_profilePage)
+//                        R.id.SubmissionPage -> navController.navigate(R.id.action_BadgesPage_to_SubmissionPage)
+//                    }
+//                }
+//            }
+//            drawerLayout.closeDrawers()
+//        }
+//        navView.setNavigationItemSelectedListener { menuItem ->
+//            when (menuItem.itemId) {
+//                R.id.profilePage -> navigateTo(R.id.profilePage)
+//                R.id.SubmissionPage -> navigateTo(R.id.SubmissionPage)
+//                R.id.BadgesPage -> navigateTo(R.id.BadgesPage)
+//            }
+//
+//            drawerLayout.closeDrawers()
+//            true
+//        }
     }
 
 }

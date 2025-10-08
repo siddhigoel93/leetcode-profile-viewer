@@ -1,4 +1,6 @@
-package com.example.leetpeek
+package com.example.leetpeek.dataClasses
+
+import com.example.leetpeek.dataClasses.UpcomingBadge
 
 data class BadgesData(
     val activeBadge: Badge?,

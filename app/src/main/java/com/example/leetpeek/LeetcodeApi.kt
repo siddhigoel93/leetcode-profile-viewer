@@ -1,7 +1,12 @@
 package com.example.leetpeek
 
+import com.example.leetpeek.dataClasses.BadgesData
+import com.example.leetpeek.dataClasses.Submission
+import com.example.leetpeek.dataClasses.SubmissionsData
+import com.example.leetpeek.dataClasses.UserProfileData
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface LeetCodeApi {
 
@@ -19,4 +24,10 @@ interface LeetCodeApi {
     suspend fun getBadges(
         @Path("username") username: String
     ) : BadgesData
+
+    @GET("/{username}/submission?limit=number")
+    suspend fun getSolved(
+        @Path("username") username: String,
+        @Query("limit") limit: Int
+    ) : List<Submission>
 }

@@ -20,17 +20,32 @@
         <action
             android:id="@+id/action_profilePage_to_badgesPage"
             app:destination="@id/BadgesPage" />
+
     </fragment>
 
     <fragment
         android:id="@+id/SubmissionPage"
         android:name="com.example.leetpeek.SubmissionFragment"
-        android:label="Submission Page"/>
+        android:label="Submission Page">
+    <action
+        android:id="@+id/action_SubmissionPage_to_badgesPage"
+        app:destination="@id/BadgesPage" />
+    <action
+        android:id="@+id/action_submissionPage_to_profilePage"
+        app:destination="@id/profilePage" />
+    </fragment>
 
     <fragment
         android:id="@+id/BadgesPage"
         android:name="com.example.leetpeek.BadgesFragment"
-        android:label="Badges Page"/>
+        android:label="Badges Page">
+        <action
+            android:id="@+id/action_BadgesPage_to_SubmissionPage"
+            app:destination="@id/SubmissionPage" />
+        <action
+            android:id="@+id/action_BadgesPage_to_profilePage"
+            app:destination="@id/profilePage" />
+    </fragment>
 
 
 

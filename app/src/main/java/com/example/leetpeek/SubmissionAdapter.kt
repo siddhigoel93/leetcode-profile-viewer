@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.leetpeek.R
-import com.example.leetpeek.TotalSubmissionNum
+import com.example.leetpeek.dataClasses.TotalSubmissionNum
 
 class SubmissionAdapter(
-    val submissionList: List<TotalSubmissionNum>
+    var submissionList: List<TotalSubmissionNum>
 ) : RecyclerView.Adapter<SubmissionAdapter.viewHolder>() {
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

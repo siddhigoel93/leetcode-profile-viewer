@@ -1,4 +1,4 @@
-package com.example.leetpeek
+package com.example.leetpeek.dataClasses
 
 data class SubmissionsData(
     val acSubmissionNum: List<AcSubmissionNum>,
