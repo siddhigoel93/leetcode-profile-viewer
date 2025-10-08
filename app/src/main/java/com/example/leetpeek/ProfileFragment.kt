@@ -33,20 +33,23 @@ class ProfileFragment : Fragment() {
         val avatar = arguments?.getString("avatar")
         val solved = arguments?.getString("solvedProblem")
 
-        // Find TextViews and set data
         view.findViewById<TextView>(R.id.profileName).text = name
         view.findViewById<TextView>(R.id.profileUsername)?.text = username
         view.findViewById<TextView>(R.id.rankCount)?.text = rank
         view.findViewById<TextView>(R.id.about).text = about
-        view.findViewById<TextView>(R.id.countSolved)
+        view.findViewById<TextView>(R.id.countSolved).text = solved
 
         val submSection = view.findViewById<LinearLayout>(R.id.sectionSubmissions)
         submSection.setOnClickListener {
-            findNavController().navigate(R.id.action_profilePage_to_submissionPage)
+            findNavController().navigate(R.id.action_profilePage_to_SubmissionPage)
         }
         val badgeSection = view.findViewById<LinearLayout>(R.id.sectionBadges)
         badgeSection.setOnClickListener {
-            findNavController().navigate(R.id.action_profilePage_to_badgesPage)
+            findNavController().navigate(R.id.action_profilePage_to_BadgesPage)
+        }
+        val solvedSection = view.findViewById<LinearLayout>(R.id.sectionSolved)
+        solvedSection.setOnClickListener {
+            findNavController().navigate(R.id.action_profilePage_to_SolvedPage)
         }
 
         return view

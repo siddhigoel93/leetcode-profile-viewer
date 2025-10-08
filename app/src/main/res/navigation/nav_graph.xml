@@ -15,11 +15,14 @@
         android:name="com.example.leetpeek.ProfileFragment"
         android:label="Profile Page">
         <action
-            android:id="@+id/action_profilePage_to_submissionPage"
+            android:id="@+id/action_profilePage_to_SubmissionPage"
             app:destination="@id/SubmissionPage" />
         <action
-            android:id="@+id/action_profilePage_to_badgesPage"
+            android:id="@+id/action_profilePage_to_BadgesPage"
             app:destination="@id/BadgesPage" />
+        <action
+            android:id="@+id/action_profilePage_to_SolvedPage"
+            app:destination="@id/SolvedPage" />
 
     </fragment>
 
@@ -28,11 +31,14 @@
         android:name="com.example.leetpeek.SubmissionFragment"
         android:label="Submission Page">
     <action
-        android:id="@+id/action_SubmissionPage_to_badgesPage"
+        android:id="@+id/action_SubmissionPage_to_BadgesPage"
         app:destination="@id/BadgesPage" />
     <action
-        android:id="@+id/action_submissionPage_to_profilePage"
+        android:id="@+id/action_SubmissionPage_to_profilePage"
         app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_SubmissionPage_to_SolvedPage"
+            app:destination="@id/SolvedPage" />
     </fragment>
 
     <fragment
@@ -45,6 +51,23 @@
         <action
             android:id="@+id/action_BadgesPage_to_profilePage"
             app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_BadgesPage_to_SolvedPage"
+            app:destination="@id/SolvedPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/SolvedPage"
+        android:name="com.example.leetpeek.SolvedFragment"
+        android:label="Badges Page">
+        <action
+            android:id="@+id/action_SolvedPage_to_SubmissionPage"
+            app:destination="@id/SubmissionPage" />
+        <action
+            android:id="@+id/action_SolvedPage_to_profilePage"
+            app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_SolvedPage_to_BadgesPage"
+            app:destination="@id/BadgesPage" />
     </fragment>
 
 

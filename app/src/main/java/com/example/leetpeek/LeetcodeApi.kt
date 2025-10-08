@@ -25,9 +25,9 @@ interface LeetCodeApi {
         @Path("username") username: String
     ) : BadgesData
 
-    @GET("/{username}/submission?limit=number")
+    @GET("{username}/submission?limit=20")
     suspend fun getSolved(
         @Path("username") username: String,
-        @Query("limit") limit: Int
     ) : List<Submission>
 }
+

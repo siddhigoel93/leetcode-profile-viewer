@@ -1,71 +1,58 @@
 package com.example.leetpeek
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.leetpeek.com.example.leetpeek.SubmissionAdapter
 import com.example.leetpeek.dataClasses.Submission
-import com.example.leetpeek.dataClasses.SubmissionsData
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+class SolvedFragment : Fragment() {
 
-class SubmissionFragment : Fragment() {
-    lateinit var ques : RecyclerView
-
-    lateinit var submissionAdapter: SubmissionAdapter
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var subItem: RecyclerView
+    private lateinit var solvedAdapter: SolvedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_submission, container, false)
+        val view = inflater.inflate(R.layout.fragment_solved, container, false)
 
+        subItem = view.findViewById(R.id.solved)
+        subItem.layoutManager = LinearLayoutManager(requireContext())
 
-        ques = view.findViewById<RecyclerView>(R.id.submissions)
-        ques.layoutManager = LinearLayoutManager(requireContext())
-
-        submissionAdapter = SubmissionAdapter(emptyList())
-        ques.adapter = submissionAdapter
-
-
+        solvedAdapter = SolvedAdapter(emptyList())
+        subItem.adapter = solvedAdapter
 
         val sharedPref = requireActivity().getSharedPreferences("MyPrefs", 0)
         val username = sharedPref.getString("leetcode_username", "") ?: ""
 
         if (username.isNotEmpty()) {
-            fetchSubmissions(username)
+            fetchSolved(username)
         } else {
             Toast.makeText(requireContext(), "Username not found!", Toast.LENGTH_SHORT).show()
         }
 
         return view
-
     }
-    fun fetchSubmissions(username: String) {
+
+    private fun fetchSolved(username: String) {
         val api = RetrofitHelper.getInstance().create(LeetCodeApi::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val response: SubmissionsData = api.getSubmData(username)
+                val response: List<Submission> = api.getSolved(username)
 
                 withContext(Dispatchers.Main) {
-                    submissionAdapter.submissionList = response.totalSubmissionNum
-                    submissionAdapter.notifyDataSetChanged()
+                    solvedAdapter.solvedList = response
+                    solvedAdapter.notifyDataSetChanged()
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -74,9 +61,5 @@ class SubmissionFragment : Fragment() {
                 }
             }
         }
-
     }
-
 }
-
-

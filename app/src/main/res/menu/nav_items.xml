@@ -9,7 +9,7 @@
     <item android:id="@+id/SubmissionPage"
         android:title="submissions"
         android:icon="@drawable/done_icon"/>
-    <item android:id="@+id/contest"
-        android:title="contests"
+    <item android:id="@+id/SolvedPage"
+        android:title="Solved"
         android:icon="@drawable/contest_icon"/>
 </menu>
