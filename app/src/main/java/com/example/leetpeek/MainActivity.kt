@@ -40,40 +40,50 @@ class MainActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             drawerLayout.openDrawer(navView)
         }
-//        fun navigateTo(destination: Int) {
-//            val currentId = navController.currentDestination?.id
-//            when (currentId) {
-//                R.id.profilePage -> {
-//                    when (destination) {
-//                        R.id.SubmissionPage -> navController.navigate(R.id.action_profilePage_to_submissionPage)
-//                        R.id.BadgesPage -> navController.navigate(R.id.action_profilePage_to_badgesPage)
-//                    }
-//                }
-//                R.id.SubmissionPage -> {
-//                    when (destination) {
-//                        R.id.profilePage -> navController.navigate(R.id.action_submissionPage_to_profilePage)
-//                        R.id.BadgesPage -> navController.navigate(R.id.action_SubmissionPage_to_badgesPage)
-//                    }
-//                }
-//                R.id.BadgesPage -> {
-//                    when (destination) {
-//                        R.id.profilePage -> navController.navigate(R.id.action_BadgesPage_to_profilePage)
-//                        R.id.SubmissionPage -> navController.navigate(R.id.action_BadgesPage_to_SubmissionPage)
-//                    }
-//                }
-//            }
-//            drawerLayout.closeDrawers()
-//        }
-//        navView.setNavigationItemSelectedListener { menuItem ->
-//            when (menuItem.itemId) {
-//                R.id.profilePage -> navigateTo(R.id.profilePage)
-//                R.id.SubmissionPage -> navigateTo(R.id.SubmissionPage)
-//                R.id.BadgesPage -> navigateTo(R.id.BadgesPage)
-//            }
-//
-//            drawerLayout.closeDrawers()
-//            true
-//        }
+        fun navigateTo(destination: Int) {
+            val currentId = navController.currentDestination?.id
+            when (currentId) {
+                R.id.profilePage -> {
+                    when (destination) {
+                        R.id.SubmissionPage -> navController.navigate(R.id.action_profilePage_to_SubmissionPage)
+                        R.id.BadgesPage -> navController.navigate(R.id.action_profilePage_to_BadgesPage)
+                        R.id.SolvedPage -> navController.navigate(R.id.action_profilePage_to_SolvedPage)
+                    }
+                }
+                R.id.SubmissionPage -> {
+                    when (destination) {
+                        R.id.profilePage -> navController.navigate(R.id.action_SubmissionPage_to_profilePage)
+                        R.id.BadgesPage -> navController.navigate(R.id.action_SubmissionPage_to_BadgesPage)
+                        R.id.SolvedPage -> navController.navigate(R.id.action_SubmissionPage_to_SolvedPage)
+                    }
+                }
+                R.id.BadgesPage -> {
+                    when (destination) {
+                        R.id.profilePage -> navController.navigate(R.id.action_BadgesPage_to_profilePage)
+                        R.id.SubmissionPage -> navController.navigate(R.id.action_BadgesPage_to_SubmissionPage)
+                        R.id.SolvedPage -> navController.navigate(R.id.action_BadgesPage_to_SolvedPage)
+                    }
+                }
+                R.id.SolvedPage -> {
+                    when (destination) {
+                        R.id.profilePage -> navController.navigate(R.id.action_SolvedPage_to_profilePage)
+                        R.id.SubmissionPage -> navController.navigate(R.id.action_SolvedPage_to_SubmissionPage)
+                        R.id.BadgesPage -> navController.navigate(R.id.action_SolvedPage_to_BadgesPage)
+                    }
+                }
+            }
+            drawerLayout.closeDrawers()
+        }
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.profilePage -> navigateTo(R.id.profilePage)
+                R.id.SubmissionPage -> navigateTo(R.id.SubmissionPage)
+                R.id.BadgesPage -> navigateTo(R.id.BadgesPage)
+            }
+
+            drawerLayout.closeDrawers()
+            true
+        }
     }
 
 }
