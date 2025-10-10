@@ -9,4 +9,5 @@
     android:elevation="4dp"
     app:title="LeetPeek"
     app:titleTextColor="@color/black"
-    app:navigationIcon="@drawable/hamburger"/>
+    app:navigationIcon="@drawable/hamburger"
+    android:fitsSystemWindows="true"/>

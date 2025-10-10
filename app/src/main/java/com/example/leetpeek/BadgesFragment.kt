@@ -14,9 +14,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.lifecycle.lifecycleScope
 
 
-class BadgesFragment : Fragment() {
+class  BadgesFragment : Fragment() {
     lateinit var badge : RecyclerView
     lateinit var badgeAdapter: BadgeAdapter
 
@@ -49,7 +50,7 @@ class BadgesFragment : Fragment() {
     fun fetchBadges(username: String) {
         val api = RetrofitHelper.getInstance().create(LeetCodeApi::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO){
             try {
                 val response: BadgesData = api.getBadges(username)
                 val badgeList: List<Badge> = response.badges.map { it as Badge }

@@ -6,7 +6,9 @@
     android:id="@+id/badgesFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E1116">
+    android:background="#0E1116"
+    android:paddingTop="?attr/actionBarSize"
+    >
 
     <TextView
         android:id="@+id/title"

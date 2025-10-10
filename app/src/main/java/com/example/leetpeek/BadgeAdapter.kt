@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.leetpeek.dataClasses.Badge
 
-class BadgeAdapter(
+class  BadgeAdapter(
     val BadgeList: List<Badge>
 ) : RecyclerView.Adapter<BadgeAdapter.viewHolder>() {
 

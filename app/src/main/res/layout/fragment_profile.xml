@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="#0E1116"
     android:id="@+id/profileFragment"
+    android:paddingTop="?attr/actionBarSize"
     >
 
 
