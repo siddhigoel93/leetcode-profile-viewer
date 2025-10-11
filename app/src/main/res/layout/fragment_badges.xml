@@ -23,6 +23,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"/>
 
+    <TextView
+        android:id="@+id/emptyMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No badges found."
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:textColor="@color/white"
+        android:padding="16dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/badgeRV"
         android:layout_width="0dp"
