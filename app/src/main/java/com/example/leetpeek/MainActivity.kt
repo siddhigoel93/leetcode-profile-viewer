@@ -45,6 +45,14 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.landingPage) {
+                bottomNav.visibility = View.GONE
+            } else {
+                bottomNav.visibility = View.VISIBLE
+            }
+        }
+
         val prefs = getSharedPreferences("leetpeek_prefs", Context.MODE_PRIVATE)
         val username = prefs.getString("username", null)
 

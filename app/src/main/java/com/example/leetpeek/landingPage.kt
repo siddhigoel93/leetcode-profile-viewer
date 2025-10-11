@@ -38,6 +38,10 @@ class LandingPage : Fragment() {
                         val api = RetrofitHelper.getInstance().create(LeetCodeApi::class.java)
                         val profile = api.getUserProfile(username)
 
+                        if (profile == null || profile.username.isNullOrEmpty()) {
+                            Toast.makeText(requireContext(), "Invalid username. Please try again.", Toast.LENGTH_LONG).show()
+                            return@launch
+                        }
                         val prefs = requireActivity().getSharedPreferences("leetpeek_prefs", Context.MODE_PRIVATE)
                         prefs.edit().putString("username", username).apply()
 

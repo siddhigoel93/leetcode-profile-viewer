@@ -53,8 +53,8 @@ class ProfileFragment : Fragment() {
         solvedSection.setOnClickListener {
             findNavController().navigate(R.id.action_profilePage_to_SolvedPage)
         }
-        val sharedPref = requireActivity().getSharedPreferences("MyPrefs", 0)
-        val username = sharedPref.getString("leetcode_username", "") ?: ""
+        val sharedPref = requireActivity().getSharedPreferences("leetpeek_prefs", 0)
+        val username = sharedPref.getString("username", "") ?: ""
 
         if (username.isNotEmpty()) {
             fetchProfileData(username)
@@ -87,7 +87,7 @@ class ProfileFragment : Fragment() {
                 e.printStackTrace()
                 Toast.makeText(
                     requireContext(),
-                    "Failed to load profile: ${e.message}",
+                    "Failed to load profile",
                     Toast.LENGTH_LONG
                 ).show()
             }

@@ -44,8 +44,8 @@ class SubmissionFragment : Fragment() {
 
 
 
-        val sharedPref = requireActivity().getSharedPreferences("MyPrefs", 0)
-        val username = sharedPref.getString("leetcode_username", "") ?: ""
+        val sharedPref = requireActivity().getSharedPreferences("leetpeek_prefs", 0)
+        val username = sharedPref.getString("username", "") ?: ""
 
         if (username.isNotEmpty()) {
             fetchSubmissions(username)
