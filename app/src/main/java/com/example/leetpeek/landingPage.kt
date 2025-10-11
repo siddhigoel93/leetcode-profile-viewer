@@ -1,5 +1,6 @@
 package com.example.leetpeek
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,16 +31,25 @@ class LandingPage : Fragment() {
 
             if (username.isEmpty()) {
                 Toast.makeText(requireContext(), "Please enter the username", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
-           else {
-                val sharedPref = requireActivity().getSharedPreferences("MyPrefs", 0)
-                with(sharedPref.edit()) {
-                    putString("leetcode_username", username)
-                    apply()
+                viewLifecycleOwner.lifecycleScope.launch {
+                    try {
+                        val api = RetrofitHelper.getInstance().create(LeetCodeApi::class.java)
+                        val profile = api.getUserProfile(username)
+
+                        val prefs = requireActivity().getSharedPreferences("leetpeek_prefs", Context.MODE_PRIVATE)
+                        prefs.edit().putString("username", username).apply()
+
+                        fetchUserProfile(username)
+
+                    } catch (e: Exception) {
+                        Toast.makeText(requireContext(), "Invalid username, please check and try again.", Toast.LENGTH_LONG).show()
+
+                    }
                 }
-                fetchUserProfile(username)
             }
-        }
+
 
         return view
     }

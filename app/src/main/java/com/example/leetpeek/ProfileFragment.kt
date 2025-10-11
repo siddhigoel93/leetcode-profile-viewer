@@ -60,6 +60,10 @@ class ProfileFragment : Fragment() {
             fetchProfileData(username)
         } else {
             Toast.makeText(requireContext(), "Username not found!", Toast.LENGTH_SHORT).show()
+            view.post {
+                findNavController().navigate(R.id.landingPage)
+            }
+            return view
         }
 
         return view
