@@ -51,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            supportActionBar?.title = "LeetPeek"
+        }
         bottomNav.setupWithNavController(navController)
         navView.setupWithNavController(navController)
     }

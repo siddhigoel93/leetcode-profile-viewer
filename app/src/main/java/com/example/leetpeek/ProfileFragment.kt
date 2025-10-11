@@ -68,7 +68,6 @@ class ProfileFragment : Fragment() {
     fun fetchProfileData(username: String) {
         val api = RetrofitHelper.getInstance().create(LeetCodeApi::class.java)
 
-
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val profile = api.getUserProfile(username)
